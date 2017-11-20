@@ -1,6 +1,6 @@
 {
   "name": "Simple Identity Generator Extension - S.I.G.E.",
-  "version": "3.0",
+  "version": "1.0",
   "manifest_version": 2,
   "description": "",
   "browser_action": {

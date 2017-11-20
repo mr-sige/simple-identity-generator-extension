@@ -1,6 +1,6 @@
-# Simple Identity Generator Extension (S.I.G.E.)
+# Simple Identity Generator Extension
 
-Originally created by: Gergely Gulacsi
+Original idea: Gergely Gulacsi (https://github.com/hulisoft)
 
 ## Installation
 
