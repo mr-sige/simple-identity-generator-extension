@@ -1,0 +1,17 @@
+    body {
+        background-color: white;
+    }
+    
+    .content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 350px;
+        padding: 5px;
+    }
+
+    .email-form {
+        display: flex;
+        flex-direction: row;
+    }

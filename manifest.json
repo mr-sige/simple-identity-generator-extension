@@ -1,12 +1,18 @@
 {
-  "name": "Simple Identity Generator Extension - S.I.G.E.",
-  "version": "1.0",
-  "manifest_version": 2,
-  "description": "",
-  "browser_action": {
-    "default_popup": "accountgen.html"
-  },
-  "icons": { "16": "icon16.png",
-           "48": "icon48.png",
-          "128": "icon128.png" }
+    "name": "Simple Identity Generator Extension - S.I.G.E.",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "",
+    "browser_action": {
+        "default_popup": "main.html"
+    },
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "permissions": [
+        "tabs",
+        "storage"
+    ]
 }
