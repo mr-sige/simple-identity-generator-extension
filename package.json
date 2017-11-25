@@ -17,5 +17,9 @@
     "sige"
   ],
   "author": "sige",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
+  }
 }
