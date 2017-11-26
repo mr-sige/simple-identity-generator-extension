@@ -65,7 +65,7 @@ module.exports = {
         // copy extension manifest and icons
         new CopyWebpackPlugin([
             { from: './src/manifest.json' },
-            { context: './src/assets', from: 'icon-**', to: 'assets' }
+            { context: './src/assets', from: 'icon**', to: 'assets' }
         ])
     ]
 };

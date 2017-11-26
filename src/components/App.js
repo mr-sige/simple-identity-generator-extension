@@ -2,7 +2,7 @@ import React from 'react';
 import EmailForm from './EmailForm';
 import Identity from './Identity';
 
-class App extends React.Component {
+export default class App extends React.Component {
 
   constructor() {
     super();
@@ -17,11 +17,7 @@ class App extends React.Component {
   }
 
   handleStoredEmail(email) {
-    if(email) {
-      this.setState({'email': email});
-    } else {
-      this.setState({'email': ''});
-    }
+    this.setState({'email': email});
   }
 
   render() {
@@ -37,6 +33,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
-

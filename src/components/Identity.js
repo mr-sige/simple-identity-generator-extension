@@ -2,7 +2,7 @@
 import React from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
-class Identity extends React.Component {
+export default class Identity extends React.Component {
   constructor() {
     super();
     this.handleTabs = this.handleTabs.bind(this);
@@ -27,22 +27,22 @@ class Identity extends React.Component {
   }
 
   handleClear() {
-    chrome.storage.sync.set('email', () => {
-      this.props.onClear('');
+    const empty = '';
+    chrome.storage.sync.set({'email':empty}, () => {
+      this.props.onClear(empty);
     });
   }
 
   render(){
+    const settingsIcon = require('../assets/settings.svg');
     return(
       <div>
         <div className="alert alert-primary">{this.state.identity}</div>
-        <a onClick={this.handleClear} href="#">Change setting</a>
         <CopyToClipboard text={this.state.identity}>
-          <button className="btn btn-primary">Copy to clipboard</button>
+          <button className="btn btn-primary copybutton">Copy to clipboard</button>
         </CopyToClipboard>
+        <img src={settingsIcon} className="settings" onClick={this.handleClear}/>
       </div>
     );
   }
 }
-
-export default Identity;
