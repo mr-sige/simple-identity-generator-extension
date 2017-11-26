@@ -22,8 +22,9 @@
     "webpack": "^3.8.1"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "start": "npm-run-all lint:watch",
+    "build": "webpack --hide-modules --config webpack.config.js",
+    "build:watch": "npm run build -- --watch",
+    "start": "npm-run-all --parallel build:watch lint:watch",
     "lint": "node_modules/.bin/esw webpack.config.* src",
     "lint:watch": "npm run lint -- --watch"
   },
@@ -38,6 +39,7 @@
   "license": "MIT",
   "dependencies": {
     "react": "^16.1.1",
+    "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.1.1"
   }
 }
