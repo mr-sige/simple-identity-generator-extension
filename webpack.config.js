@@ -1,10 +1,11 @@
-const path = require('path')
-const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+    devtool: 'inline-source-map',
     // Entry files for our popup and background pages
     entry: {
         popup: './src/popup.js'
@@ -64,7 +65,7 @@ module.exports = {
         // copy extension manifest and icons
         new CopyWebpackPlugin([
             { from: './src/manifest.json' },
-            { context: './src/assets', from: 'icon**', to: 'assets' }
+            { context: './src/assets', from: 'icon-**', to: 'assets' }
         ])
     ]
-}
+};
