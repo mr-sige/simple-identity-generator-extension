@@ -1,6 +1,6 @@
 import React from 'react';
 
-class App extends React.Compnent {
+class Content extends React.Compnent {
     render() {
         return(
             <div>sige</div>
@@ -8,4 +8,4 @@ class App extends React.Compnent {
     }
 }
 
-export default App;
+export default Content;

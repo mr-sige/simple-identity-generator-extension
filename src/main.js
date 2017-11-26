@@ -1,7 +1,5 @@
-alert('sige');
-
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import Content from 'Content';
 
 const content = document.getElementById('content');
-ReactDOM.render(App, content);
+ReactDOM.render(<div>sdf</div>, content);

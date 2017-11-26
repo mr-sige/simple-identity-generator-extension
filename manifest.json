@@ -14,5 +14,16 @@
     "permissions": [
         "tabs",
         "storage"
-    ]
+    ],
+    "content_scripts": [
+        {
+            "js": [
+                "react.production.min.js",
+                "react-dom.production.min.js"
+            ],
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ]
+        }]
 }
