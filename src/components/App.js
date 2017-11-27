@@ -1,6 +1,7 @@
 import React from 'react';
 import EmailForm from './EmailForm';
-import Identity from './Identity';
+import Identity from './IdentityView';
+import chromeApi from '../services/chromeApi';
 
 export default class App extends React.Component {
 
@@ -9,14 +10,14 @@ export default class App extends React.Component {
     this.state ={
       'email': ''
     };
-    this.handleStoredEmail = this.handleStoredEmail.bind(this);
-// eslint-disable-next-line no-undef
-    chrome.storage.sync.get('email', (result) => {
-      this.handleStoredEmail(result.email);
+    this.updateStoredEmail = this.updateStoredEmail.bind(this);
+    chromeApi.getEmail((result) => {
+      this.updateStoredEmail(result.email);
     });
   }
 
-  handleStoredEmail(email) {
+  updateStoredEmail(email) {
+    chromeApi.setEmail(email);
     this.setState({'email': email});
   }
 
@@ -25,9 +26,9 @@ export default class App extends React.Component {
     return (
       <div>
         {email ? (
-          <Identity email={email} onClear={this.handleStoredEmail}/>
+          <Identity email={email} onSettingsClick={this.updateStoredEmail}/>
         ) : (
-          <EmailForm onSubmit={this.handleStoredEmail}/>
+          <EmailForm onSubmit={this.updateStoredEmail}/>
         )}
       </div>
     );

@@ -25,10 +25,7 @@ export default class EmailForm extends React.Component {
     if (!re.test(email)) {
       this.setState({message: 'Invalid email'});
     } else {
-      // eslint-disable-next-line no-undef
-      chrome.storage.sync.set({'email': email}, () => {
-        this.props.onSubmit(email);
-      });
+      this.props.onSubmit(email);
     }
   }
 

@@ -1,39 +1,30 @@
-/* eslint-disable react/prop-types,no-undef */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import FontIcon from 'material-ui/FontIcon';
+import chromeApi from '../services/chromeApi';
+import identity from '../services/identity';
 
 export default class Identity extends React.Component {
   constructor() {
     super();
-    this.handleTabs = this.handleTabs.bind(this);
-    this.handleClear = this.handleClear.bind(this);
+    this.handleSettingsClick = this.handleSettingsClick.bind(this);
 
-    chrome.tabs.query({currentWindow: true, active: true}, tabs => {
-      this.handleTabs(tabs);
+    chromeApi.getActiveUrl(url => {
+      const email = this.props.email;
+      const id = identity.createIdentity(url, email);
+      this.setState({identity: id});
     });
+
     this.state = {
       identity: ''
     };
   }
 
-  handleTabs(tabs) {
-    const email = this.props.email;
-    let url = new URL(tabs[0].url);
-    let hostnameArray = url.hostname.split(".");
-    let currentDomain = hostnameArray[hostnameArray.length - 2];
-    const [emailLocalPart, emailDomain] = email.split("@");
-    const identity = emailLocalPart + "+" + currentDomain + "@" + emailDomain;
-    this.setState({identity: identity});
-  }
-
-  handleClear() {
-    const empty = '';
-    chrome.storage.sync.set({'email': empty}, () => {
-      this.props.onClear(empty);
-    });
+  handleSettingsClick() {
+    this.props.onSettingsClick('');
   }
 
   render() {
@@ -45,7 +36,7 @@ export default class Identity extends React.Component {
             <RaisedButton label="Copy to clipboard" secondary/>
           </CopyToClipboard>
           <div className="settings">
-            <div onClick={this.handleClear}>
+            <div onClick={this.handleSettingsClick}>
               <FontIcon className="material-icons">settings</FontIcon>
             </div>
           </div>
