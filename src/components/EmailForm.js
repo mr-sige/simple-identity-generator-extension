@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types,no-useless-escape */
 import React from 'react';
 import Message from './Message';
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 
 export default class EmailForm extends React.Component {
 
@@ -43,9 +45,8 @@ export default class EmailForm extends React.Component {
   render() {
     return (
       <div>
-        <input type="text" className="form-control" id="emailinput" placeholder="sige@example.com"
-               onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
-        <button id="submit" type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Save</button>
+        <TextField hintText="sige@example.com" onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
+        <FlatButton label="Save" secondary onClick={this.handleSubmit}/>
         {!!this.state.message && <Message message={this.state.message}/>}
       </div>
     );

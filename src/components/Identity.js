@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types,no-undef */
 import React from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import FontIcon from 'material-ui/FontIcon';
 
 export default class Identity extends React.Component {
   constructor() {
@@ -8,7 +11,7 @@ export default class Identity extends React.Component {
     this.handleTabs = this.handleTabs.bind(this);
     this.handleClear = this.handleClear.bind(this);
 
-    chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
+    chrome.tabs.query({currentWindow: true, active: true}, tabs => {
       this.handleTabs(tabs);
     });
     this.state = {
@@ -28,20 +31,25 @@ export default class Identity extends React.Component {
 
   handleClear() {
     const empty = '';
-    chrome.storage.sync.set({'email':empty}, () => {
+    chrome.storage.sync.set({'email': empty}, () => {
       this.props.onClear(empty);
     });
   }
 
-  render(){
-    const settingsIcon = require('../assets/settings.svg');
-    return(
+  render() {
+    return (
       <div>
-        <div className="alert alert-primary">{this.state.identity}</div>
-        <CopyToClipboard text={this.state.identity}>
-          <button className="btn btn-primary copybutton">Copy to clipboard</button>
-        </CopyToClipboard>
-        <img src={settingsIcon} className="settings" onClick={this.handleClear}/>
+        <TextField id="identity" value={this.state.identity}/>
+        <div className="controls">
+          <CopyToClipboard text={this.state.identity}>
+            <RaisedButton label="Copy to clipboard" secondary/>
+          </CopyToClipboard>
+          <div className="settings">
+            <div onClick={this.handleClear}>
+              <FontIcon className="material-icons">settings</FontIcon>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
