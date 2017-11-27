@@ -4,18 +4,17 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import FontIcon from 'material-ui/FontIcon';
-import chromeApi from '../services/chromeApi';
-import identity from '../services/identity';
+import chromeApi from '../services/ChromeApi';
+import Identity from '../services/Identity';
 
-export default class Identity extends React.Component {
+export default class IdentityView extends React.Component {
   constructor() {
     super();
     this.handleSettingsClick = this.handleSettingsClick.bind(this);
 
     chromeApi.getActiveUrl(url => {
-      const email = this.props.email;
-      const id = identity.createIdentity(url, email);
-      this.setState({identity: id});
+      const identity = Identity.createIdentity(url, this.props.email);
+      this.setState({identity: identity});
     });
 
     this.state = {

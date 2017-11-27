@@ -4,6 +4,7 @@
   "description": "simple identity generator extension",
   "main": "accountgen.js",
   "devDependencies": {
+    "@types/react": "^16.0.25",
     "babel": "^6.23.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
