@@ -55,6 +55,10 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.NormalModuleReplacementPlugin(
+      /ChromeApi.js/,
+      '../firefox/FirefoxApi.js'
+    ),
     new UglifyJSPlugin(),
     new CleanWebpackPlugin(['dist']),
     new ExtractTextPlugin('bundle.css'),
@@ -69,7 +73,7 @@ module.exports = {
       { context: './src/assets', from: 'icon**', to: 'assets' }
     ]),
     new ZipPlugin({
-      filename: 'sige-chrome.zip',
+      filename: 'sige-firefox.zip',
       path: 'package'
     })
   ]

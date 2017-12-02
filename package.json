@@ -28,12 +28,14 @@
     "zip-webpack-plugin": "^2.1.0"
   },
   "scripts": {
-    "build": "webpack --hide-modules --config webpack.config.js",
+    "build": "webpack --hide-modules --config webpack.dev.config.js",
+    "build-firefox": "webpack --config webpack.firefox.dev.config.js",
     "build:watch": "npm run build -- --watch",
     "start": "npm-run-all --parallel build:watch lint:watch",
     "lint": "node_modules/.bin/esw webpack.config.* src",
     "lint:watch": "npm run lint -- --watch",
-    "package": "webpack --config webpack.prod.js"
+    "package": "webpack --config webpack.prod.js",
+    "package-firefox": "webpack --config webpack.firefox.prod.js"
   },
   "repository": {
     "type": "git",

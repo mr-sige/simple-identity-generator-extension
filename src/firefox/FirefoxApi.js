@@ -3,15 +3,15 @@
 export default class BrowserApi {
 
   static getEmail(callback) {
-    chrome.storage.sync.get('email', callback);
+    browser.storage.sync.get('email', callback);
   }
 
   static setEmail(email, callback) {
-    chrome.storage.sync.set({'email': email}, callback);
+    browser.storage.sync.set({'email': email}, callback);
   }
 
   static getActiveUrl(callback) {
-    chrome.tabs.query({currentWindow: true, active: true}, tabs => {
+    browser.tabs.query({currentWindow: true, active: true}, tabs => {
       if (tabs && tabs[0]) {
         const url = new URL(tabs[0].url);
         callback(url);
