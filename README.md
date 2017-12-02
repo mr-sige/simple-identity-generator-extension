@@ -1,7 +1,5 @@
 # Simple Identity Generator Extension
 
-Original idea: Gergely Gulacsi (https://github.com/hulisoft)
-
 ## Installation
 
 1. Download + Unpack
