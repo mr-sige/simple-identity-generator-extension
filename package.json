@@ -48,8 +48,8 @@
   "license": "MIT",
   "dependencies": {
     "material-ui": "^0.19.4",
-    "react": "^16.1.1",
+    "react": "^16.8.1",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-dom": "^16.1.1"
+    "react-dom": "^16.8.1"
   }
 }
